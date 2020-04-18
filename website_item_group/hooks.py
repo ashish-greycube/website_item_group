@@ -112,13 +112,16 @@ app_license = "MIT"
 # -------
 
 # before_tests = "website_item_group.install.before_tests"
-
+"extend_website_page_controller_context" : "website_item_group.www.all-products.index"
 # Overriding Methods
 # ------------------------------
 #
 # override_whitelisted_methods = {
-# 	"frappe.desk.doctype.event.event.get_events": "website_item_group.event.get_events"
+# 	"erpnext.portal.product_configurator.utils.get_products_html_for_website": "website_item_group.utils.get_products_html_for_website"
 # }
+# website_route_rules = [
+# 	{"from_route": "/all-products", "to_route": "/a.html"},
+# ]
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
