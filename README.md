@@ -18,7 +18,7 @@ Step 1) One time to get app
 Step 2) to install app on any instance/site
 
 `bench --site [sitename] install-app website_item_group`
-
+`bench --site [sitename] migrate`
 
 ### Screeenshots
 
