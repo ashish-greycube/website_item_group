@@ -15,9 +15,10 @@ def get_context(context):
 	context.items = get_products_for_website(field_filters, attribute_filters, search)
 
 	product_settings = get_product_settings()
-	# show field_filters for enable_website_item_group
+	# show field_filters for enable_website_item_group	
 	context.field_filters = get_field_filter_data() \
 		if product_settings.enable_field_filters or product_settings.enable_website_item_group  else []
+
 	context.attribute_filters = get_attribute_filter_data() \
 		if product_settings.enable_attribute_filters else []
 

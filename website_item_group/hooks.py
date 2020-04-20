@@ -112,16 +112,21 @@ app_license = "MIT"
 # -------
 
 # before_tests = "website_item_group.install.before_tests"
-extend_website_page_controller_context = {
-    "frappe.www.website_script": "website_item_group.www.all-products.index"}
+# extend_website_page_controller_context = {
+#     "frappe.www.website_script": "website_item_group.www.all-products.index"}
 # Overriding Methods
 # ------------------------------
 #
-# override_whitelisted_methods = {
-# 	"erpnext.portal.product_configurator.utils.get_products_html_for_website": "website_item_group.utils.get_products_html_for_website"
-# }
+
+override_whitelisted_methods = {
+    "erpnext.portal.product_configurator.utils.get_products_html_for_website": "website_item_group.utils.get_products_html_for_website"
+}
+extend_website_page_controller_context = {
+    "erpnext.www.all-products.index": "website_item_group.www.all-products.index"}
+
+#alternative    
 # website_route_rules = [
-# 	{"from_route": "/all-products", "to_route": "/a.html"},
+# 	{"from_route": "/all-products", "to_route": "custom-all-products"},
 # ]
 #
 # each overriding function accepts a `data` argument;
