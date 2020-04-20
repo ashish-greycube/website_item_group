@@ -7,7 +7,6 @@ $(() => {
 		}
 
 		bind_filters() {
-			console.log('11111111111111111111')
 			this.field_filters = {};
 			this.attribute_filters = {};
 
@@ -77,7 +76,6 @@ $(() => {
 		}
 
 		bind_search() {
-			console.log('11111111111111111111')
 			$('input[type=search]').on('keydown', (e) => {
 				if (e.keyCode === 13) {
 					// Enter
@@ -92,7 +90,6 @@ $(() => {
 		}
 
 		restore_filters_state() {
-			console.log('11111111111111111111')
 			const filters = frappe.utils.get_query_params();
 			let {field_filters, attribute_filters} = filters;
 
@@ -121,7 +118,6 @@ $(() => {
 		}
 
 		get_items_with_filters() {
-			console.log('get_items_with_filters')
 			const { attribute_filters, field_filters } = this;
 			const args = {
 				field_filters: if_key_exists(field_filters),
@@ -129,7 +125,7 @@ $(() => {
 			};
 
 			return new Promise((resolve, reject) => {
-				frappe.call('erpnext.portal.product_configurator.utils.get_products_html_for_website', args)
+				frappe.call('website_item_group.utils.get_products_html_for_website', args)
 					.then(r => {
 						if (r.exc) reject(r.exc);
 						else resolve(r.message);
@@ -142,7 +138,6 @@ $(() => {
 	new ProductListing();
 
 	function get_query_string(object) {
-		console.log('get_items_with_filters')
 		const url = new URLSearchParams();
 		for (let key in object) {
 			const value = object[key];

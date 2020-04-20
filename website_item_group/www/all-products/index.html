@@ -1,12 +1,11 @@
 {% extends "templates/web.html" %}
 
-{% block title %}{{ _('Products11111111111111111111111111111111111111') }}{% endblock %}
+{% block title %}{{ _('Products') }}{% endblock %}
 {% block header %}
-<h1>{{ _('Products11111111111111111111111111111111111111') }}</h1>
+<h1>{{ _('Products') }}</h1>
 {% endblock header %}
 
 {% block page_content %}
-11111111111111111111111111111111111111
 <div class="row">
 	<div class="col-8">
 		<div class="input-group input-group-sm mb-3">
@@ -65,11 +64,11 @@
 						<div class="custom-control custom-checkbox" data-value="{{ value }}">
 							<input type="checkbox"
 								class="product-filter field-filter custom-control-input"
-								id="{{value}}"
+								id="{{ item_field.fieldname }}__{{value}}"
 								data-filter-name="{{ item_field.fieldname }}"
 								data-filter-value="{{ value }}"
 							>
-							<label class="custom-control-label" for="{{value}}">
+							<label class="custom-control-label" for="{{ item_field.fieldname }}__{{value}}">
 								{{ value }}
 							</label>
 						</div>

@@ -112,7 +112,8 @@ app_license = "MIT"
 # -------
 
 # before_tests = "website_item_group.install.before_tests"
-"extend_website_page_controller_context" : "website_item_group.www.all-products.index"
+extend_website_page_controller_context = {
+    "frappe.www.website_script": "website_item_group.www.all-products.index"}
 # Overriding Methods
 # ------------------------------
 #
