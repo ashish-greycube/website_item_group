@@ -3,6 +3,9 @@ import numpy as np
 from erpnext.portal.product_configurator.item_variants_cache import ItemVariantsCacheManager
 from erpnext.portal.product_configurator.utils import get_product_settings,get_item_codes_by_attributes,get_items,get_product_settings,get_attribute_filter_data,get_html_for_items
 
+def get_weightage(item_group_name):
+	weightage = frappe.db.get_value('Item Group', item_group_name, 'weightage')
+	return weightage
 
 def get_field_filter_data():
 	product_settings = get_product_settings()
@@ -33,7 +36,14 @@ def get_field_filter_data():
 
 		if f.fieldtype =='Table':
 			fieldname = [df.fieldname for df in meta.fields if df.fieldtype=='Link'][0]
-			values = [d[fieldname] for d in frappe.get_all(doctype,fields=[fieldname],filters=filters,group_by=fieldname)]
+			print('----------------')
+			print(doctype,fieldname,filters)
+			values=[]
+			for d in frappe.get_all(doctype,fields=[fieldname],filters=filters,group_by=fieldname):
+				values.append(d[fieldname])
+			# values = [d[fieldname] for d in frappe.get_all(doctype,fields=[fieldname],filters=filters,group_by=fieldname)]
+			values.sort(reverse=True, key=get_weightage)
+			print(values)
 		else:
 			values = [d.name for d in frappe.get_all(doctype, filters)]
 		filter_data.append([f, values])
