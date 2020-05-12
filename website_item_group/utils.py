@@ -36,14 +36,11 @@ def get_field_filter_data():
 
 		if f.fieldtype =='Table':
 			fieldname = [df.fieldname for df in meta.fields if df.fieldtype=='Link'][0]
-			print('----------------')
-			print(doctype,fieldname,filters)
 			values=[]
 			for d in frappe.get_all(doctype,fields=[fieldname],filters=filters,group_by=fieldname):
 				values.append(d[fieldname])
 			# values = [d[fieldname] for d in frappe.get_all(doctype,fields=[fieldname],filters=filters,group_by=fieldname)]
 			values.sort(reverse=True, key=get_weightage)
-			print(values)
 		else:
 			values = [d.name for d in frappe.get_all(doctype, filters)]
 		filter_data.append([f, values])
